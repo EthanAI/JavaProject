@@ -10,7 +10,8 @@ public class Main {
 
         Node n = Node.getLinkedList(3, 5, 7, 9);
         n.outputList();
-        n.reverseList();
+        log();
+        n = n.reverseList();
         n.outputList();
 
 //        for(int i = 0; i <= 8; i++) {
@@ -20,11 +21,16 @@ public class Main {
 //        Fibonacci.iterativeFib(7);
     }
 
-    public static void log(String text) {
-        System.out.println(text);
+    public static void log() {
+        log("");
     }
 
     public static void log(int num) {
         log(num + "");
     }
+
+    public static void log(String text) {
+        System.out.println(text);
+    }
+
 }

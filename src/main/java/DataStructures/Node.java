@@ -21,15 +21,20 @@ public class Node {
         }
     }
 
-    public void reverseList() {
+    public Node reverseList() {
         Node current = this;
-        Node next = null;
+        Node old = null; // the previous node the current node needs to start pointing to
 
         while(current != null) {
-            Node temp = current.next; // Store so we can iterate forward
-            current.next = temp; // Overwrite pointer so we go back
-            current = temp;
+            Node future = current.next; // Store next node so we can iterate forward\
+
+            current.next = old; // Reassign the next pointer so this node aims in reverse now
+
+            old = current;  // save current node to be the future old node
+            current = future; // Move to next node so we can repeat the process
         }
+
+        return old; // Current should be null. Old should be last valid node
     }
 
     public static Node getLinkedList(int... value) {
