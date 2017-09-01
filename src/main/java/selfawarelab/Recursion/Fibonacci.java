@@ -1,4 +1,6 @@
-package Recursion;
+package selfawarelab.Recursion;
+
+import selfawarelab.Common;
 
 /**
  * Created by ethansmith on 8/30/17.
@@ -11,7 +13,7 @@ package Recursion;
     how many = ?
  */
 public class Fibonacci {
-    // This is terribel
+    // This is terrible. Bottom up recursion requires too much duplication
     public static int recursiveFib(int num) {
         if(num <= 1)
             return num;
@@ -30,6 +32,19 @@ public class Fibonacci {
             cacheInt[num] = dynamicFib(num - 2) + dynamicFib(num - 1); // Case 2: d(0) & d(1) are already knowm. d(2) written to cache
             return cacheInt[num];                                      // Case 3: d(1) & d(2) are already known. d(3) written to cache
         }
+    }
+
+    // Alternatively, doing top down recursion is good
+    public static int recursiveFibTop(int num) {
+        return recursiveFibTop(0, 1, 0, num);
+    }
+
+    private static int recursiveFibTop(int last, int total, int count, int num) {
+        Common.log("Fib", count + " " + total);
+        if(count == num)
+            return total;
+        else
+            return recursiveFibTop(total, last + total, count + 1, num);
     }
 
     public static void iterativeFib(int num) {

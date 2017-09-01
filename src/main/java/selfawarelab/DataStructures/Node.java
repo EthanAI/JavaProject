@@ -1,4 +1,6 @@
-package DataStructures;
+package selfawarelab.DataStructures;
+
+import static selfawarelab.Common.log;
 
 /**
  * Created by ethansmith on 8/30/17.
@@ -16,7 +18,7 @@ public class Node {
     public void outputList() {
         Node n = this;
         while(n != null) {
-            System.out.println(n.data);
+            log(n.data);
             n = n.next;
         }
     }

@@ -1,4 +1,4 @@
-package Bits;
+package selfawarelab.Bits;
 
 import java.util.ArrayList;
 
@@ -60,7 +60,7 @@ public class Bits {
         for(; num > 0; num >>= 1, bits++) { // modification is done before the evaluation. Kind of meaningless for 0
 //            log(num + " " + bits);
         }
-//        log("Bits: " + bits);
+//        log("selfawarelab.Bits: " + bits);
         return bits;
     }
 
