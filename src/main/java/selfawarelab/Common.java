@@ -27,6 +27,13 @@ public class Common {
         log(tag + ":" + text);
     }
 
+    public static void log(int[] array) {
+        String outputString = "";
+        for(int num : array) {
+            outputString += num + " ";
+        }
+        log(outputString);
+    }
 
     public static <T> void log(ArrayList<T> arrayList) {
         String outputString = "";

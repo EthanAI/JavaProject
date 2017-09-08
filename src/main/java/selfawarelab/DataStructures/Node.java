@@ -39,7 +39,7 @@ public class Node {
         return old; // Current should be null. Old should be last valid node
     }
 
-    public static Node getLinkedList(int... value) {
+    public static Node makeLinkedList(int... value) {
         Node head = null;
 
         Node last = null;

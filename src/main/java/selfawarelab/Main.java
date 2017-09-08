@@ -3,6 +3,7 @@ package selfawarelab;
 import java.util.ArrayList;
 
 import selfawarelab.Bits.Bits;
+import selfawarelab.DataStructures.Array;
 import selfawarelab.DataStructures.Node;
 import selfawarelab.Recursion.Fibonacci;
 
@@ -15,7 +16,7 @@ import static selfawarelab.Recursion.Combinations.*;
 
 public class Main {
     public static void main(String[] args) {
-//        Node n = Node.getLinkedList(3, 5, 7, 9);
+//        Node n = Node.makeLinkedList(3, 5, 7, 9);
 //        n.outputList();
 //        log();
 //        n = n.reverseList();
@@ -42,21 +43,16 @@ public class Main {
 //        int[] combosAr = dynamicCombos(setAr);
 //        logs(combosAr);
 //        log();
+//
+//        ArrayList<Integer> setAl2 = getSimpleArrayList();
+//        ArrayList<ArrayList<Integer>> combosALL = dynamicComboSets2(setAl2);
+//        log(combosALL);
+//        log();
+//
+//        ArrayList<Bits.TLVObject> tlvs = Bits.getAllTLV(Common.getBytes());
+//        log(tlvs);
 
-        ArrayList<Integer> setAl2 = getSimpleArrayList();
-        ArrayList<ArrayList<Integer>> combosALL = dynamicComboSets2(setAl2);
-        log(combosALL);
-        log();
-
-        ArrayList<Bits.TLVObject> tlvs = Bits.getAllTLV(Common.getBytes());
-        log(tlvs);
-    }
-
-    private static void logs(int[] array) {
-        String outputString = "";
-        for(int num : array) {
-            outputString += num + " ";
-        }
-        log(outputString);
+        int[] reverse = Array.reverseArray(Array.makeArray(3, 5, 7, 9));
+        Common.log(reverse);
     }
 }
