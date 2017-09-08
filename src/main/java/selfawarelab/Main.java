@@ -2,11 +2,12 @@ package selfawarelab;
 
 import java.util.ArrayList;
 
+import selfawarelab.Bits.Bits;
 import selfawarelab.DataStructures.Node;
 import selfawarelab.Recursion.Fibonacci;
 
 import static selfawarelab.Common.*;
-import static selfawarelab.Recursion.Combinations.dynamicCombos;
+import static selfawarelab.Recursion.Combinations.*;
 
 /**
  * Created by ethansmith on 8/30/17.
@@ -32,15 +33,23 @@ public class Main {
 //        Fibonacci.iterativeFib(7);
 //        log();
 
-        ArrayList<Integer> setAL = getSimpleArrayList();
-        ArrayList<Integer> combosAL = dynamicCombos(setAL);
-        log(combosAL);
+//        ArrayList<Integer> setAL = getSimpleArrayList();
+//        ArrayList<Integer> combosAL = dynamicCombos(setAL);
+//        log(combosAL);
+//        log();
+//
+//        int[] setAr = getSimpleArray();
+//        int[] combosAr = dynamicCombos(setAr);
+//        logs(combosAr);
+//        log();
+
+        ArrayList<Integer> setAl2 = getSimpleArrayList();
+        ArrayList<ArrayList<Integer>> combosALL = dynamicComboSets2(setAl2);
+        log(combosALL);
         log();
 
-        int[] setAr = getSimpleArray();
-        int[] combosAr = dynamicCombos(setAr);
-        logs(combosAr);
-        log();
+        ArrayList<Bits.TLVObject> tlvs = Bits.getAllTLV(Common.getBytes());
+        log(tlvs);
     }
 
     private static void logs(int[] array) {

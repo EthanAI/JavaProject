@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 
 public class Bits {
-    private ArrayList<Integer> int2subset(int binary, ArrayList<Integer> set) {
+    public static ArrayList<Integer> int2subset(int binary, ArrayList<Integer> set) {
         ArrayList<Integer> subset = new ArrayList<>();
         for(int i = 0; binary > 0; binary >>= 1, i++) {
             if((binary & 1) == 1)
@@ -24,7 +24,7 @@ public class Bits {
     }
 
     // Does it really matter if we start from the high bit or the low bit?
-    private void int2binary(int num) {
+    public static void int2binary(int num) {
         // move the bit we check
 //        int bitPostion = 1;
 //        for(int i = 0; i < 3; i++) {
@@ -51,7 +51,7 @@ public class Bits {
     }
 
     // Use this sort of loop to do your math
-    private int getBits(int num) {
+    private static int getBits(int num) {
 //        log("Number: " + num);
         int bits = 0;
 //        for(; num > 0; num /=2, bits++) {
@@ -75,4 +75,63 @@ public class Bits {
 //        return s;
 //    }
 
+
+    public static ArrayList<TLVObject> getAllTLV(byte[] data) {
+        int index = 0;
+        ArrayList<TLVObject> allObjects = new ArrayList<>();
+
+        while(index < data.length) {
+            int type = 0;
+            int length = 0;
+            byte[] value;
+
+            for(int i = 0; i < TLVObject.TYPE_LENGTH_BYTES; i++) {
+                type <<= TLVObject.TYPE_LENGTH_BYTES;
+                type += data[index++];
+            }
+
+            for(int i = 0; i < TLVObject.LENGTH_LENGTH_BYTES; i++) {
+                length <<= TLVObject.LENGTH_LENGTH_BYTES;
+                length += data[index++];
+            }
+
+            value = new byte[length];
+            for(int i = 0; i < length; i++) {
+                value[i] = data[index++];
+            }
+
+            TLVObject o = new TLVObject(type, length, value);
+
+            allObjects.add(o);
+        }
+
+        return allObjects;
+    }
+
+    public static class TLVObject {
+        int type;
+        int length;
+        byte[] value;
+
+        public static final int TYPE_LENGTH_BYTES = 2;
+        public static final int LENGTH_LENGTH_BYTES = 2;
+
+        TLVObject(int type, int length, byte[] value) {
+            this.type = type;
+            this.length = length;
+            this.value = value;
+        }
+
+        @Override
+        public String toString() {
+            StringBuilder sb = new StringBuilder();
+            sb.append("Type: " + type + " Length: " + length + " Bytes: ");
+
+            for(byte b : value) {
+                sb.append(b);
+                sb.append(" ");
+            }
+            return sb.toString();
+        }
+    }
 }

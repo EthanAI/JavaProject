@@ -95,4 +95,18 @@ public class Common {
         }
         return  outputString;
     }
+
+    public static byte[] getBytes() {
+        byte[] data = {
+                0x00, 0x01,
+                0x00, 0x02,
+                0x02, 0x03,
+
+                0x00, 0x02,
+                0x00, 0x04,
+                0x10, 0x11,
+                0x12, 0x13
+        };
+        return data;
+    }
 }
